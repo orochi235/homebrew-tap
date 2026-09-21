@@ -1,8 +1,8 @@
 class Perch < Formula
   desc "Generate a macOS menu bar app from a YAML file"
   homepage "https://michaelbaker.tech/perch/"
-  url "https://github.com/orochi235/perch/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "d9a4800de6e3da37d5be639409d102ae3a1f2320e46cc99218eef500072957e4"
+  url "https://github.com/orochi235/perch/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "52c81eafd9d217fb700678ee1699a71434b9b3982b1c7a7228e9dad98128348e"
   license "MIT"
   head "https://github.com/orochi235/perch.git", branch: "main"
 
