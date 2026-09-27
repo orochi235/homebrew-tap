@@ -1,10 +1,10 @@
-class Slopboard < Formula
+class Transom < Formula
   desc "Wall for AI-generated renders that forgets them unless you pin one"
-  homepage "https://michaelbaker.tech/slopboard/"
-  url "https://github.com/orochi235/slopboard/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "b17b9dd2ce06505f29a2bf47c0401b8901ef672e9d520db870c54d9e2acd034d"
+  homepage "https://michaelbaker.tech/transom/"
+  url "https://github.com/orochi235/transom/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "94eb6e39b90d5cba05e2844ed4dbf9149902ca2efc7f87d3d7252bdbde4d8123"
   license "MIT"
-  head "https://github.com/orochi235/slopboard.git", branch: "main"
+  head "https://github.com/orochi235/transom.git", branch: "main"
 
   depends_on :macos
   depends_on "node"
@@ -14,21 +14,19 @@ class Slopboard < Formula
     cd libexec do
       system "npm", "ci", "--no-audit", "--no-fund"
     end
-    # Through opt, not the Cellar: wall writes this path into its LaunchAgents
-    # and wire into Claude's settings, and the Cellar path dies on upgrade.
-    %w[slop wall wire].each do |cmd|
-      (bin/cmd).write_env_script opt_libexec/"bin"/cmd, SLOPBOARD_HOME: opt_libexec
-    end
+    # Through opt, not the Cellar: transom writes this path into its LaunchAgents
+    # and into Claude's settings, and the Cellar path dies on upgrade.
+    (bin/"transom").write_env_script opt_libexec/"bin/transom", TRANSOM_HOME: opt_libexec
   end
 
   def caveats
     <<~EOS
-      Start the wall (daemon on :8787, page on :5183) as LaunchAgents:
-        wall install
-      Then open http://localhost:5183 on the monitor it lives on.
+      Start the wall (daemon on :8787, page on :7750) as LaunchAgents:
+        transom install
+      Then open http://localhost:7750 on the monitor it lives on.
 
       Point the Claude Code agents on this machine at it:
-        wire
+        transom wire
 
       HTML pages and 3D models are shot with Google Chrome, and video
       needs ffmpeg:
@@ -39,7 +37,7 @@ class Slopboard < Formula
   test do
     (testpath/"probe").mkpath
     cd testpath/"probe" do
-      assert_equal "probe", shell_output("#{bin}/slop --print-zone").strip
+      assert_equal "probe", shell_output("#{bin}/transom zone").strip
     end
 
     # Not the daemon: the test sandbox denies its file watcher. The runner loader
