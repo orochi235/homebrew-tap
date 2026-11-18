@@ -35,4 +35,12 @@ class Hued < Formula
         cp #{share}/hued.fish ~/.config/fish/conf.d/hued.fish
     EOS
   end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/hued --version")
+    # Reaches huedmap through hued-py and libexec, which the install list has to get right.
+    assert_match "usage: hued map", shell_output("#{bin}/hued map --help")
+    system bin/"hued", "set", "bg=#191970"
+    assert_match "background=#191970", (testpath/".hued").read
+  end
 end
