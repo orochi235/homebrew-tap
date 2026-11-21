@@ -2,8 +2,8 @@ class Kouhai < Formula
   desc "Ledger of what Claude Code sessions owe you: questions and pending instructions"
   homepage "https://github.com/orochi235/kouhai"
   # The release asset, not the tag's archive: it carries the page prebuilt.
-  url "https://github.com/orochi235/kouhai/releases/download/v0.3.0/kouhai-0.3.0.tar.gz"
-  sha256 "8d9748cbd9350cc0851168ea48a6d0749e09596597e960862037273c8ff98c66"
+  url "https://github.com/orochi235/kouhai/releases/download/v0.3.1/kouhai-0.3.1.tar.gz"
+  sha256 "c94b919d64349224a8644ec32d32998606a8a23e287db6024a5d3a81e4b9cb7b"
   license "MIT"
   head "https://github.com/orochi235/kouhai.git", branch: "main"
 
