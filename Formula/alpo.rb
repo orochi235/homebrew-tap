@@ -1,8 +1,8 @@
 class Alpo < Formula
   desc "Serve a library from its local checkout until a release carries what you need"
   homepage "https://github.com/orochi235/alpo"
-  url "https://registry.npmjs.org/@msb235/alpo/-/alpo-0.1.0.tgz"
-  sha256 "c3f58f43520aa2ec3c45c5778c1e94518bc88ea6777cedf76ee501786ae5f900"
+  url "https://registry.npmjs.org/@msb235/alpo/-/alpo-0.3.0.tgz"
+  sha256 "c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f"
   license "MIT"
 
   depends_on "node"
